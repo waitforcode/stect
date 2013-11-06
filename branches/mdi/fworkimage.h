@@ -15,9 +15,11 @@ public:
     ~fWorkImage();
 
     void setPixmap(QPixmap img);
+    void visualAttack();
 
 protected:
     void changeEvent(QEvent *e);
+    QPixmap* image;
 
 private:
     Ui::fWorkImage *ui;

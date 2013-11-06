@@ -6,6 +6,7 @@
 
 #include <QImage>
 #include "finfo.h"
+#include "fworkimage.h"
 
 
 namespace Ui {
@@ -33,9 +34,10 @@ private:
     Ui::MainWindow *ui;
     QString fileName;
     QMdiSubWindow * info;
+    fWorkImage* active;
 
 private slots:
-    void on_action_6_triggered(bool checked);
+    void on_action_8_triggered();
     void on_action_5_triggered(bool checked);
 };
 

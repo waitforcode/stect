@@ -4,7 +4,6 @@
 #include <QDebug>
 #include <QFileDialog>
 
-#include "fworkimage.h"
 
 
 
@@ -29,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->action, SIGNAL(triggered()), SLOT(load()));
     connect(ui->action_2, SIGNAL(triggered()), SLOT(save()));
+    active = NULL;
 }
 
 MainWindow::~MainWindow()
@@ -59,7 +59,6 @@ void MainWindow::visual_attack(QString filename){
 
             attr1->setPixel(i,j, np);
         }
-    attr1->save("test.png");
 
     ui->label->setPixmap(QPixmap::fromImage(*attr1));
 }
@@ -78,6 +77,8 @@ void MainWindow::loadOrig(QString filename){
     ui->mdiArea->addSubWindow(task);
     task->setPixmap(QPixmap(filename));
     task->show();
+
+    active = task;
 
     fInfo* fi = (fInfo*)info->widget();
     fi->setFileName(filename);
@@ -193,3 +194,9 @@ void MainWindow::on_action_5_triggered(bool checked)
         info->hide();
 }
 
+
+void MainWindow::on_action_8_triggered()
+{
+    if(active)
+        active->visualAttack();
+}
