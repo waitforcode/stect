@@ -59,7 +59,7 @@
            <x>0</x>
            <y>0</y>
            <width>293</width>
-           <height>459</height>
+           <height>421</height>
           </rect>
          </property>
          <attribute name="label">
@@ -84,7 +84,7 @@
            <x>0</x>
            <y>0</y>
            <width>209</width>
-           <height>459</height>
+           <height>421</height>
           </rect>
          </property>
          <attribute name="label">
@@ -177,6 +177,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="action"/>
+   <addaction name="action_8"/>
   </widget>
   <action name="action">
    <property name="icon">
@@ -219,6 +220,10 @@
    </property>
   </action>
   <action name="action_8">
+   <property name="icon">
+    <iconset>
+     <normaloff>../../../usr/share/icons/oxygen/48x48/actions/layer-visible-on.png</normaloff>../../../usr/share/icons/oxygen/48x48/actions/layer-visible-on.png</iconset>
+   </property>
    <property name="text">
     <string>Визуальная атака</string>
    </property>
