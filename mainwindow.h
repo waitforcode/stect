@@ -2,12 +2,17 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMdiSubWindow>
 
 #include <QImage>
+#include "finfo.h"
+
 
 namespace Ui {
 class MainWindow;
 }
+
+//class QMdiSubWindow;
 
 class MainWindow : public QMainWindow
 {
@@ -27,6 +32,11 @@ protected slots:
 private:
     Ui::MainWindow *ui;
     QString fileName;
+    QMdiSubWindow * info;
+
+private slots:
+    void on_action_6_triggered(bool checked);
+    void on_action_5_triggered(bool checked);
 };
 
 #endif // MAINWINDOW_H

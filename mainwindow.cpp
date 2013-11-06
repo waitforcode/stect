@@ -4,6 +4,10 @@
 #include <QDebug>
 #include <QFileDialog>
 
+#include "fworkimage.h"
+
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -18,6 +22,10 @@ MainWindow::MainWindow(QWidget *parent) :
     loadOrig(filename);
     visual_attack(filename);
     x_2_attack(filename);
+
+    info = ui->mdiArea->addSubWindow(new fInfo(ui->mdiArea),Qt::Widget);
+
+//    info->hide();
 
     connect(ui->action, SIGNAL(triggered()), SLOT(load()));
     connect(ui->action_2, SIGNAL(triggered()), SLOT(save()));
@@ -66,22 +74,17 @@ void MainWindow::loadOrig(QString filename){
     if(!orig.load(filename)){
         return;
     }
-    ui->tableWidget->setRowCount(7);
-    ui->tableWidget->setItem(0,0,new QTableWidgetItem(QString::fromLocal8Bit("Имя файла"))
-                             );
-    ui->tableWidget->setItem(0,1,new QTableWidgetItem(filename)
-                             );
+    fWorkImage *task = new fWorkImage(ui->mdiArea);
+    ui->mdiArea->addSubWindow(task);
+    task->setPixmap(QPixmap(filename));
+    task->show();
 
-    ui->tableWidget->setItem(1,0,new QTableWidgetItem(QString::fromLocal8Bit("Ширина"))
-                             );
-    ui->tableWidget->setItem(1,1,new QTableWidgetItem(QString("%1").arg(orig.width()))
-                             );
+    fInfo* fi = (fInfo*)info->widget();
+    fi->setFileName(filename);
+    fi->setWidth(orig.width());
+    fi->setHeight(orig.height());
 
-    ui->tableWidget->setItem(2,0,new QTableWidgetItem(QString::fromLocal8Bit("Высота"))
-                             );
-    ui->tableWidget->setItem(2,1,new QTableWidgetItem(QString("%1").arg(orig.height()))
-                             );
-
+/*
     ui->tableWidget->setItem(3,0,new QTableWidgetItem(QString::fromLocal8Bit("Число цветов"))
                              );
     ui->tableWidget->setItem(3,1,new QTableWidgetItem(QString("%1").arg(orig.colorCount()))
@@ -103,6 +106,7 @@ void MainWindow::loadOrig(QString filename){
                              );
 
     ui->tableWidget->resizeColumnsToContents();
+    */
 }
 
 /*
@@ -121,7 +125,7 @@ void MainWindow::x_2_attack(QString filename){
     int height=220;
     int width = orig.byteCount()/100;
 
-    const uchar* data = orig.constBits();
+    const uchar* data = orig.bits();
 
 //    qDebug()<<width;
 
@@ -180,3 +184,12 @@ void MainWindow::save(){
     ui->label_3->pixmap()->save(fileName+"_X.png");
     qDebug()<<"end save";
 }
+
+void MainWindow::on_action_5_triggered(bool checked)
+{
+    if(checked)
+        info->show();
+    else
+        info->hide();
+}
+
