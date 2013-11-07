@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+class QListWidgetItem;
+
 namespace Ui {
     class fInfo;
 }
@@ -16,11 +18,19 @@ public:
     void setWidth(int orig);
     void setHeight(int orig);
 
+signals:
+    void allChannels();
+    void setChannel(int);
+
 protected:
     void changeEvent(QEvent *e);
 
 private:
     Ui::fInfo *ui;
+
+private slots:
+    void on_listWidget_itemClicked(QListWidgetItem* item);
+    void on_comboBox_currentIndexChanged(int index);
 };
 
 #endif // FINFO_H

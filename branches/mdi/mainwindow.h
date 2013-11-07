@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QMdiSubWindow>
+#include <QResizeEvent>
 
 #include <QImage>
 #include "finfo.h"
@@ -22,13 +23,12 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     void loadOrig(QString filename);
-    void visual_attack(QString filename);
-    void x_2_attack(QString filename);
     ~MainWindow();
 
 protected slots:
     void load();
     void save();
+    void resizeEvent ( QResizeEvent * event );
     
 private:
     Ui::MainWindow *ui;
@@ -37,8 +37,13 @@ private:
     fWorkImage* active;
 
 private slots:
+    void on_action_8_triggered(bool checked);
     void on_action_8_triggered();
     void on_action_5_triggered(bool checked);
+
+    void allChannels();
+    void setChannel(int);
+
 };
 
 #endif // MAINWINDOW_H
