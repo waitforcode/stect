@@ -24,86 +24,6 @@
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <widget class="QToolBox" name="toolBox">
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
-        <widget class="QWidget" name="page">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>309</width>
-           <height>421</height>
-          </rect>
-         </property>
-         <attribute name="label">
-          <string>Исходное изображение</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_3">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>Тут должно быть исходное изображение</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="page_3">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>293</width>
-           <height>421</height>
-          </rect>
-         </property>
-         <attribute name="label">
-          <string>Визуальная атака</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>Тут визуальная атака на стегосистему</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="page_2">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>209</width>
-           <height>421</height>
-          </rect>
-         </property>
-         <attribute name="label">
-          <string>Атака хи-квадрат</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Отчет по атаке хи-квадрат</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </widget>
       </widget>
       <widget class="QMdiArea" name="mdiArea"/>
      </widget>
@@ -220,9 +140,12 @@
    </property>
   </action>
   <action name="action_8">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset>
-     <normaloff>../../../usr/share/icons/oxygen/48x48/actions/layer-visible-on.png</normaloff>../../../usr/share/icons/oxygen/48x48/actions/layer-visible-on.png</iconset>
+     <normaloff>:/images/layer-visible-off.png</normaloff>:/images/layer-visible-off.png</iconset>
    </property>
    <property name="text">
     <string>Визуальная атака</string>

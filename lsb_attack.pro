@@ -16,3 +16,4 @@ FORMS += mainwindow.ui \
     fInfo.ui \
     finfo.ui \
     fworkimage.ui
+RESOURCES += icons.qrc

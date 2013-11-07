@@ -35,6 +35,8 @@ void fWorkImage::setPixmap(QPixmap img){
     ui->label->setMaximumHeight(img.height());
     ui->label->setPixmap(img);
     image = new QPixmap(img);
+//    this->setWindowTitle(img.);
+//    setChannel(Blue);
 }
 
 void fWorkImage::visualAttack(){
@@ -45,14 +47,14 @@ void fWorkImage::visualAttack(){
             QRgb p = attr1.pixel(i,j);
             QRgb np;
             if(attr1.hasAlphaChannel())
-                np = qRgba((qRed(p)-((int)(qRed(p)/2))*2)*255,
-                           (qGreen(p)-((int)(qGreen(p)/2))*2)*255,
-                           (qBlue(p)-((int)(qBlue(p)/2))*2)*255,
-                            (qAlpha(p)-((int)(qAlpha(p)/2))*2)*255);
+                np = qRgba((qRed(p) & 1)*255,
+                           (qGreen(p)&1)*255,
+                           (qBlue(p)&1)*255,
+                            (qAlpha(p)&1)*255);
             else
-                np = qRgb((qRed(p)-((int)(qRed(p)/2))*2)*255,
-                           (qGreen(p)-((int)(qGreen(p)/2))*2)*255,
-                           (qBlue(p)-((int)(qBlue(p)/2))*2)*255);
+                np = qRgb((qRed(p)&1)*255,
+                           (qGreen(p)&1)*255,
+                           (qBlue(p)&1)*255);
 
             attr1.setPixel(i,j, np);
         }
@@ -60,4 +62,116 @@ void fWorkImage::visualAttack(){
 
     ui->label->setPixmap(QPixmap::fromImage(attr1));
 
+}
+
+void fWorkImage::reset(){
+    if(image)
+        ui->label->setPixmap(*image);
+}
+
+/*void fWorkImage::x_2_attack(QString filename){
+
+    QImage orig;
+
+    if(!orig.load(filename)){
+        return;
+    }
+
+    int byte = 0;
+    int height=220;
+    int width = orig.byteCount()/100;
+
+    const uchar* data = orig.bits();
+
+//    qDebug()<<width;
+
+    if(width>1030){
+        height = ((int) width/1030+1)*220;
+        width = 1030;
+    }
+    QImage graph(width,height, orig.format());
+    graph.fill(Qt::black);
+
+    width = orig.byteCount()/100;
+
+    for(int i=10;i<width;i++){ //Обработка одной полосы графика
+        int offset = (int)(i/1030);
+
+        graph.setPixel(i-offset*1030, 110 + (offset)*220, qRgb(0,0,255)); //Ось х
+
+        if(i%102 == 10) //Вертикальная сетка
+            for(int j=0; j<220;j++)
+                graph.setPixel(i-offset*1030,j+offset*220,qRgb(0,0,255));
+
+
+//Расчет среднего значения наименее значащего бита для интервала
+
+
+        int avg=0;
+        for(int j = 0; j<100;j++){
+            avg += *(data+byte+j)%2;
+        }
+        byte+=10;
+        graph.setPixel(i-offset*1030,(int)(avg*220/100) + offset*220, qRgb(0,255,0));
+    }
+
+    graph.save("graph.PNG");
+    ui->label_3->setPixmap(QPixmap::fromImage(graph));
+
+}
+*/
+#include <QDebug>
+void fWorkImage::setChannel(Channel channel){
+    QImage *chan = NULL;
+    switch(channel){
+    case Red:
+        chan= setRChannel();
+        break;
+    case Green:
+        chan= setGChannel();
+        break;
+    case Blue:
+        chan= setBChannel();
+        break;
+    }
+    if(image)
+        ui->label->setPixmap(QPixmap::fromImage(*chan));
+    delete chan;
+}
+
+QImage* fWorkImage::setRChannel(){
+    QImage *attr1 = new QImage(image->toImage());
+
+    for(int j=0;j<attr1->height();j++)
+        for(int i=0;i<attr1->width();i++){
+            QRgb p = attr1->pixel(i,j);
+            attr1->setPixel(i,j,  qRgb(qRed(p), 0, 0));
+        }
+
+    return attr1;
+}
+
+QImage* fWorkImage::setGChannel(){
+    QImage *attr1 = new QImage(image->toImage());
+
+    for(int j=0;j<attr1->height();j++)
+        for(int i=0;i<attr1->width();i++){
+            QRgb p = attr1->pixel(i,j);
+            attr1->setPixel(i,j,  qRgb(0, qGreen(p), 0));
+        }
+
+    return attr1;
+}
+
+QImage* fWorkImage::setBChannel(){
+
+    QImage *attr1 = new QImage(image->toImage());
+
+    for(int j=0;j<attr1->height();j++)
+        for(int i=0;i<attr1->width();i++){
+            QRgb p = attr1->pixel(i,j);
+            attr1->setPixel(i,j,  qRgb(0, 0, qBlue(p)));
+        }
+
+    return attr1;
 }

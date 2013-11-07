@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>layer-visible-off.png</file>
+        <file>layer-visible-on.png</file>
+        <file>help-hint.png</file>
+    </qresource>
+</RCC>
