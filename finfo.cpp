@@ -59,6 +59,8 @@ void fInfo::on_listWidget_itemClicked(QListWidgetItem* item)
     }else{
         ui->listWidget->clearSelection();
         ui->listWidget->setItemSelected(item, true);
+        if(ui->comboBox->currentIndex() == 1)
+            index += 4;
         emit setChannel(index);
     }
 

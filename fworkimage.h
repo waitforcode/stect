@@ -14,8 +14,15 @@ public:
     enum Channel{
         Red,
         Green,
-        Blue
+        Blue,
+        Y=4,
+        Cb,
+        Cr
 
+    };
+
+    enum Filters{
+        VisualAttack=1
     };
 
 public:
@@ -36,6 +43,11 @@ private:
     QImage* setRChannel();
     QImage* setGChannel();
     QImage* setBChannel();
+    QImage* setYChannel();
+    QImage* setCbChannel();
+    QImage* setCrChannel();
+
+    int state;
 };
 
 #endif // FWORKIMAGE_H
