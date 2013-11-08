@@ -4,23 +4,30 @@
 #include <QDebug>
 #include <QFileDialog>
 
+
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    fInfo *finfo = new fInfo(ui->mdiArea);
+    info = ui->mdiArea->addSubWindow(finfo,Qt::Widget);
+    info->setFixedHeight(200);
+    info->setFixedWidth(362);
+    info->move(width()-362, height()-200);
+    info->move(362, 200);
+
+    connect(finfo, SIGNAL(allChannels()), this, SLOT(allChannels()));
+    connect(finfo, SIGNAL(setChannel(int)),this, SLOT(setChannel(int)));
 
 
-//    QString filename= "/home/procurator/imgcomp.png";
-    QString filename= "/home/procurator/dota.png";
-
-
-    loadOrig(filename);
-    visual_attack(filename);
-    x_2_attack(filename);
+//    info->hide();
 
     connect(ui->action, SIGNAL(triggered()), SLOT(load()));
     connect(ui->action_2, SIGNAL(triggered()), SLOT(save()));
+    active = NULL;
 }
 
 MainWindow::~MainWindow()
@@ -28,32 +35,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::visual_attack(QString filename){
-    QImage *attr1 = new QImage();
-    if (!attr1->load(filename)){
-        qDebug()<<"error";
-        return;
-    }
-
-    for(int j=0;j<attr1->height();j++)
-        for(int i=0;i<attr1->width();i++){
-            QRgb p = attr1->pixel(i,j);
-            QRgb np;
-            if(attr1->hasAlphaChannel())
-                np = qRgba((qRed(p)-((int)(qRed(p)/2))*2)*255,
-                           (qGreen(p)-((int)(qGreen(p)/2))*2)*255,
-                           (qBlue(p)-((int)(qBlue(p)/2))*2)*255,
-                            (qAlpha(p)-((int)(qAlpha(p)/2))*2)*255);
-            else
-                np = qRgb((qRed(p)-((int)(qRed(p)/2))*2)*255,
-                           (qGreen(p)-((int)(qGreen(p)/2))*2)*255,
-                           (qBlue(p)-((int)(qBlue(p)/2))*2)*255);
-
-            attr1->setPixel(i,j, np);
-        }
-    attr1->save("test.png");
-
-    ui->label->setPixmap(QPixmap::fromImage(*attr1));
+void MainWindow::resizeEvent ( QResizeEvent * event ){
+    info->move(event->size().width()-392, event->size().height()-320);
 }
 
 /*
@@ -61,27 +44,26 @@ void MainWindow::visual_attack(QString filename){
 */
 
 void MainWindow::loadOrig(QString filename){
-    ui->label_2->setPixmap(QPixmap(filename));
     QImage orig;
     if(!orig.load(filename)){
         return;
     }
-    ui->tableWidget->setRowCount(7);
-    ui->tableWidget->setItem(0,0,new QTableWidgetItem(QString::fromLocal8Bit("Имя файла"))
-                             );
-    ui->tableWidget->setItem(0,1,new QTableWidgetItem(filename)
-                             );
+    fWorkImage *task = new fWorkImage(ui->mdiArea);
+    QMdiSubWindow *sub =  ui->mdiArea->addSubWindow(task);
+    task->setWindowTitle(filename);
+    task->setPixmap(QPixmap(filename));
+    task->show();
 
-    ui->tableWidget->setItem(1,0,new QTableWidgetItem(QString::fromLocal8Bit("Ширина"))
-                             );
-    ui->tableWidget->setItem(1,1,new QTableWidgetItem(QString("%1").arg(orig.width()))
-                             );
+    sub->setMinimumSize(orig.size().width(), orig.height()+30);
 
-    ui->tableWidget->setItem(2,0,new QTableWidgetItem(QString::fromLocal8Bit("Высота"))
-                             );
-    ui->tableWidget->setItem(2,1,new QTableWidgetItem(QString("%1").arg(orig.height()))
-                             );
+    active = task;
 
+    fInfo* fi = (fInfo*)info->widget();
+    fi->setFileName(filename);
+    fi->setWidth(orig.width());
+    fi->setHeight(orig.height());
+
+/*
     ui->tableWidget->setItem(3,0,new QTableWidgetItem(QString::fromLocal8Bit("Число цветов"))
                              );
     ui->tableWidget->setItem(3,1,new QTableWidgetItem(QString("%1").arg(orig.colorCount()))
@@ -103,80 +85,60 @@ void MainWindow::loadOrig(QString filename){
                              );
 
     ui->tableWidget->resizeColumnsToContents();
-}
-
-/*
-  Реализация атаки хи-квадрат
-*/
-
-void MainWindow::x_2_attack(QString filename){
-
-    QImage orig;
-
-    if(!orig.load(filename)){
-        return;
-    }
-
-    int byte = 0;
-    int height=220;
-    int width = orig.byteCount()/100;
-
-    const uchar* data = orig.constBits();
-
-//    qDebug()<<width;
-
-    if(width>1030){
-        height = ((int) width/1030+1)*220;
-        width = 1030;
-    }
-    QImage graph(width,height, orig.format());
-    graph.fill(Qt::black);
-
-    width = orig.byteCount()/100;
-
-    for(int i=10;i<width;i++){ //Обработка одной полосы графика
-        int offset = (int)(i/1030);
-
-        graph.setPixel(i-offset*1030, 110 + (offset)*220, qRgb(0,0,255)); //Ось х
-
-        if(i%102 == 10) //Вертикальная сетка
-            for(int j=0; j<220;j++)
-                graph.setPixel(i-offset*1030,j+offset*220,qRgb(0,0,255));
-
-/*
-Расчет среднего значения наименее значащего бита для интервала
-*/
-
-        int avg=0;
-        for(int j = 0; j<100;j++){
-            avg += *(data+byte+j)%2;
-        }
-        byte+=10;
-        graph.setPixel(i-offset*1030,(int)(avg*220/100) + offset*220, qRgb(0,255,0));
-    }
-
-    graph.save("graph.PNG");
-    ui->label_3->setPixmap(QPixmap::fromImage(graph));
-
+    */
 }
 
 void MainWindow::load(){
     fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
-                                                     "/home",
+                                                     ".",
                                                      tr("Images (*.png *.xpm *.jpg *.bmp *.tiff)"));
 
     if(fileName.isEmpty())
         return;
     loadOrig(fileName);
-    visual_attack(fileName);
-    x_2_attack(fileName);
-
 }
 
 void MainWindow::save(){
-    qDebug()<<fileName;
-    ui->label_2->pixmap()->save(fileName);
-    ui->label->pixmap()->save(fileName+"_LSBs.png");
-    ui->label_3->pixmap()->save(fileName+"_X.png");
-    qDebug()<<"end save";
+}
+
+void MainWindow::on_action_5_triggered(bool checked)
+{
+    if(checked)
+        info->show();
+    else
+        info->hide();
+}
+
+
+void MainWindow::on_action_8_triggered()
+{
+
+}
+
+void MainWindow::on_action_8_triggered(bool checked)
+{
+    if(active){
+        if(checked){
+            ui->action_8->setIcon(QIcon(":/images/layer-visible-on.png"));
+            active->visualAttack();
+        }else{
+            ui->action_8->setIcon(QIcon(":/images/layer-visible-off.png"));
+            active->reset();
+        }
+    }
+}
+
+void MainWindow::setChannel(int chan){
+    if(active){
+        active->setChannel((fWorkImage::Channel) chan);
+    }
+
+}
+
+void MainWindow::allChannels(){
+    if(active){
+/*        ui->action_8->setCheckable(false);
+        ui->action_8->setIcon(QIcon(":/images/layer-visible-off.png"));
+*/        active->reset();
+    }
 }
