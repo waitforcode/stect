@@ -49,10 +49,12 @@ void MainWindow::loadOrig(QString filename){
         return;
     }
     fWorkImage *task = new fWorkImage(ui->mdiArea);
-    ui->mdiArea->addSubWindow(task);
+    QMdiSubWindow *sub =  ui->mdiArea->addSubWindow(task);
     task->setWindowTitle(filename);
     task->setPixmap(QPixmap(filename));
     task->show();
+
+    sub->setMinimumSize(orig.size().width(), orig.height()+30);
 
     active = task;
 
@@ -134,6 +136,9 @@ void MainWindow::setChannel(int chan){
 }
 
 void MainWindow::allChannels(){
-    if(active)
-        active->reset();
+    if(active){
+/*        ui->action_8->setCheckable(false);
+        ui->action_8->setIcon(QIcon(":/images/layer-visible-off.png"));
+*/        active->reset();
+    }
 }

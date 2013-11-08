@@ -36,12 +36,12 @@ void fWorkImage::setPixmap(QPixmap img){
     ui->label->setPixmap(img);
     image = new QPixmap(img);
 //    this->setWindowTitle(img.);
-//    setChannel(Blue);
+//    setChannel(Y);
 }
 
 void fWorkImage::visualAttack(){
 
-    QImage attr1 = image->toImage();
+    QImage attr1 = ui->label->pixmap()->toImage();
     for(int j=0;j<attr1.height();j++)
         for(int i=0;i<attr1.width();i++){
             QRgb p = attr1.pixel(i,j);
@@ -62,11 +62,15 @@ void fWorkImage::visualAttack(){
 
     ui->label->setPixmap(QPixmap::fromImage(attr1));
 
+    state|=VisualAttack;
+
 }
 
 void fWorkImage::reset(){
     if(image)
         ui->label->setPixmap(*image);
+
+    state = 0;
 }
 
 /*void fWorkImage::x_2_attack(QString filename){
@@ -133,9 +137,20 @@ void fWorkImage::setChannel(Channel channel){
     case Blue:
         chan= setBChannel();
         break;
-    }
+    case Y:
+        chan = setYChannel();
+        break;
+    case Cb:
+        chan = setCbChannel();
+        break;
+    case Cr:
+        chan = setCrChannel();
+        break;
+    }    
     if(image)
         ui->label->setPixmap(QPixmap::fromImage(*chan));
+    if(state & VisualAttack)
+        visualAttack();
     delete chan;
 }
 
@@ -173,5 +188,45 @@ QImage* fWorkImage::setBChannel(){
             attr1->setPixel(i,j,  qRgb(0, 0, qBlue(p)));
         }
 
+    return attr1;
+}
+
+QImage* fWorkImage::setYChannel(){
+
+    QImage *attr1 =  new QImage(image->toImage());
+
+    for(int j=0;j<attr1->height();j++)
+        for(int i=0;i<attr1->width();i++){
+            QRgb p = attr1->pixel(i,j);
+            int pixel = 0.299*qRed(p) + 0.578 *qGreen(p) +0.114 * qBlue(p);
+            attr1->setPixel(i,j, qRgb(pixel, pixel, pixel));
+        }
+    return attr1;
+}
+
+
+QImage* fWorkImage::setCbChannel(){
+
+    QImage *attr1 =  new QImage(image->toImage());
+
+    for(int j=0;j<attr1->height();j++)
+        for(int i=0;i<attr1->width();i++){
+            QRgb p = attr1->pixel(i,j);
+            uint pixel = 128 - 0.168736*qRed(p) - 0.331264 *qGreen(p) +0.5 * qBlue(p);
+            attr1->setPixel(i,j, qRgb(pixel, pixel, pixel));
+        }
+    return attr1;
+}
+
+QImage* fWorkImage::setCrChannel(){
+
+    QImage *attr1 =  new QImage(image->toImage());
+
+    for(int j=0;j<attr1->height();j++)
+        for(int i=0;i<attr1->width();i++){
+            QRgb p = attr1->pixel(i,j);
+            int pixel = 128 + 0.5*qRed(p) - 0.418688 *qGreen(p) - 0.081312 * qBlue(p);
+            attr1->setPixel(i,j, qRgb(pixel, pixel, pixel));
+        }
     return attr1;
 }
