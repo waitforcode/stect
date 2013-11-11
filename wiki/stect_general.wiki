@@ -10,4 +10,4 @@ Add your content here.
 
 = Table of contents =
 
-[wiki/Visual_attack_at_steganography]
+[Visual_attack_at_steganography]
