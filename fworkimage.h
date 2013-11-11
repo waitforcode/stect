@@ -34,6 +34,8 @@ public:
     void reset();
     void setChannel(Channel channel);
 
+    QWidget *analyseFormat();
+
 protected:
     void changeEvent(QEvent *e);
     QPixmap* image;

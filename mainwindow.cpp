@@ -142,3 +142,14 @@ void MainWindow::allChannels(){
 */        active->reset();
     }
 }
+
+void MainWindow::on_action_9_triggered()
+{
+    if(active == NULL)
+        return;
+    QWidget *w =  active->analyseFormat();
+    if(w!=NULL){
+        QMdiSubWindow *sub =  ui->mdiArea->addSubWindow(w);
+        w->show();
+    }
+}

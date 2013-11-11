@@ -69,8 +69,27 @@
      </property>
      <addaction name="action_8"/>
     </widget>
+    <widget class="QMenu" name="menu_6">
+     <property name="title">
+      <string>Анализаторы</string>
+     </property>
+     <widget class="QMenu" name="menuJPEG">
+      <property name="title">
+       <string>JPEG</string>
+      </property>
+     </widget>
+     <widget class="QMenu" name="menuGIF">
+      <property name="title">
+       <string>GIF</string>
+      </property>
+      <addaction name="action_11"/>
+     </widget>
+     <addaction name="menuJPEG"/>
+     <addaction name="menuGIF"/>
+     <addaction name="action_9"/>
+    </widget>
     <addaction name="menu_5"/>
-    <addaction name="action_7"/>
+    <addaction name="menu_6"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_4"/>
@@ -97,6 +116,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="action"/>
+   <addaction name="action_9"/>
    <addaction name="action_8"/>
   </widget>
   <action name="action">
@@ -134,11 +154,6 @@
     <string>Инфо</string>
    </property>
   </action>
-  <action name="action_7">
-   <property name="text">
-    <string>Анализаторы</string>
-   </property>
-  </action>
   <action name="action_8">
    <property name="checkable">
     <bool>true</bool>
@@ -149,6 +164,20 @@
    </property>
    <property name="text">
     <string>Визуальная атака</string>
+   </property>
+  </action>
+  <action name="action_9">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/images/edit-table-insert-row-above.png</normaloff>:/images/edit-table-insert-row-above.png</iconset>
+   </property>
+   <property name="text">
+    <string>Формат файла</string>
+   </property>
+  </action>
+  <action name="action_11">
+   <property name="text">
+    <string>Палитра</string>
    </property>
   </action>
  </widget>
