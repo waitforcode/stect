@@ -3,5 +3,11 @@
         <file>layer-visible-off.png</file>
         <file>layer-visible-on.png</file>
         <file>help-hint.png</file>
+        <file>edit-table-insert-row-above.png</file>
+    </qresource>
+    <qresource prefix="/small">
+        <file>arrow-right.png</file>
+        <file>dialog-cancel.png</file>
+        <file>dialog-ok.png</file>
     </qresource>
 </RCC>

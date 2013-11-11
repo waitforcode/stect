@@ -1,5 +1,6 @@
 #include "fworkimage.h"
 #include "ui_fworkimage.h"
+#include "fformatanalyse.h"
 
 fWorkImage::fWorkImage(QWidget *parent) :
     QWidget(parent),
@@ -35,8 +36,7 @@ void fWorkImage::setPixmap(QPixmap img){
     ui->label->setMaximumHeight(img.height());
     ui->label->setPixmap(img);
     image = new QPixmap(img);
-//    this->setWindowTitle(img.);
-//    setChannel(Y);
+
 }
 
 void fWorkImage::visualAttack(){
@@ -229,4 +229,50 @@ QImage* fWorkImage::setCrChannel(){
             attr1->setPixel(i,j, qRgb(pixel, pixel, pixel));
         }
     return attr1;
+}
+
+#include <QFile>
+
+QWidget* fWorkImage::analyseFormat(){
+
+    QFile fl(this->windowTitle());
+    int step = 50;
+    if(fl.open(QFile::ReadOnly)){
+//Чиатаем файл с конца
+        QByteArray templ;
+        int ended = 0xffd8ffd9;
+        templ.append(ended);
+
+        int position =-1;
+
+        for(int i = fl.size()-step*2; i>0; i-=step){
+            fl.seek(i);
+            QByteArray arr = fl.read(step*2);
+            if(arr.contains(templ)){
+                position = arr.indexOf(templ) +i;
+                break;
+            }
+        }
+
+        if(position == -1 ){
+            fl.close();
+            return NULL;
+        }
+        FFormatAnalyse* window = new FFormatAnalyse();
+
+        if(fl.size()-position>4){
+            window->appended(true);
+            fl.seek(position);
+            window->setAppended(fl.readAll());
+        }else
+            window->appended(false);
+
+        return window;
+    //Тут проверяем, что ничего не прописано в конце
+//А есть гарантия, что FFD8 и FFD9 не содержится в потоке данных JPEG'а?
+
+//    this->setWindowTitle(img.);
+//    setChannel(Y);
+    }
+    return NULL;
 }

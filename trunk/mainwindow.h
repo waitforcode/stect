@@ -37,6 +37,7 @@ private:
     fWorkImage* active;
 
 private slots:
+    void on_action_9_triggered();
     void on_action_8_triggered(bool checked);
     void on_action_8_triggered();
     void on_action_5_triggered(bool checked);

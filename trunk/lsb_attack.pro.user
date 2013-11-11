@@ -76,7 +76,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-f1a5F2vTM2,guid=37f00e0aa34c5b1fc2821bcc527b31fe</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-EAUmFHmM1L,guid=cbc06fb550f1a5100b6b08025280a09e</value>
     <value type="QString">DEFAULTS_PATH=/usr/share/gconf/gnome.default.path</value>
     <value type="QString">DESKTOP_SESSION=gnome</value>
     <value type="QString">DISPLAY=:0.0</value>
@@ -84,8 +84,8 @@
     <value type="QString">GDM_KEYBOARD_LAYOUT=us</value>
     <value type="QString">GDM_LANG=ru_RU.utf8</value>
     <value type="QString">GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-rvPcoz</value>
-    <value type="QString">GNOME_KEYRING_PID=1415</value>
+    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-hcvrII</value>
+    <value type="QString">GNOME_KEYRING_PID=1203</value>
     <value type="QString">GTK_MODULES=canberra-gtk-module</value>
     <value type="QString">HOME=/home/vivanov</value>
     <value type="QString">LANG=ru_RU.utf8</value>
@@ -97,17 +97,17 @@
     <value type="QString">PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
     <value type="QString">PWD=/home/vivanov</value>
     <value type="QString">QTDIR=/usr/share/qt4</value>
-    <value type="QString">SESSION_MANAGER=local/vivanov:@/tmp/.ICE-unix/1433,unix/vivanov:/tmp/.ICE-unix/1433</value>
+    <value type="QString">SESSION_MANAGER=local/vivanov:@/tmp/.ICE-unix/1221,unix/vivanov:/tmp/.ICE-unix/1221</value>
     <value type="QString">SHELL=/bin/bash</value>
     <value type="QString">SPEECHD_PORT=7560</value>
-    <value type="QString">SSH_AGENT_PID=1467</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-rvPcoz/ssh</value>
+    <value type="QString">SSH_AGENT_PID=1255</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-hcvrII/ssh</value>
     <value type="QString">USER=vivanov</value>
     <value type="QString">USERNAME=vivanov</value>
-    <value type="QString">XAUTHORITY=/var/run/gdm/auth-for-vivanov-pQiNmK/database</value>
+    <value type="QString">XAUTHORITY=/var/run/gdm/auth-for-vivanov-qSE6AU/database</value>
     <value type="QString">XDG_CONFIG_DIRS=/etc/xdg/xdg-gnome:/etc/xdg</value>
     <value type="QString">XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/</value>
-    <value type="QString">XDG_SESSION_COOKIE=56fcfb4009e87a71e6e987045090e605-1383805438.476391-803263169</value>
+    <value type="QString">XDG_SESSION_COOKIE=56fcfb4009e87a71e6e987045090e605-1384161438.588179-1671123647</value>
    </valuelist>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
     <value type="QString">/home/vivanov/stect/lsb_attack.pro</value>
@@ -126,7 +126,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-f1a5F2vTM2,guid=37f00e0aa34c5b1fc2821bcc527b31fe</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-EAUmFHmM1L,guid=cbc06fb550f1a5100b6b08025280a09e</value>
     <value type="QString">DEFAULTS_PATH=/usr/share/gconf/gnome.default.path</value>
     <value type="QString">DESKTOP_SESSION=gnome</value>
     <value type="QString">DISPLAY=:0.0</value>
@@ -134,8 +134,8 @@
     <value type="QString">GDM_KEYBOARD_LAYOUT=us</value>
     <value type="QString">GDM_LANG=ru_RU.utf8</value>
     <value type="QString">GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-rvPcoz</value>
-    <value type="QString">GNOME_KEYRING_PID=1415</value>
+    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-hcvrII</value>
+    <value type="QString">GNOME_KEYRING_PID=1203</value>
     <value type="QString">GTK_MODULES=canberra-gtk-module</value>
     <value type="QString">HOME=/home/vivanov</value>
     <value type="QString">LANG=ru_RU.utf8</value>
@@ -147,17 +147,17 @@
     <value type="QString">PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
     <value type="QString">PWD=/home/vivanov</value>
     <value type="QString">QTDIR=/usr/share/qt4</value>
-    <value type="QString">SESSION_MANAGER=local/vivanov:@/tmp/.ICE-unix/1433,unix/vivanov:/tmp/.ICE-unix/1433</value>
+    <value type="QString">SESSION_MANAGER=local/vivanov:@/tmp/.ICE-unix/1221,unix/vivanov:/tmp/.ICE-unix/1221</value>
     <value type="QString">SHELL=/bin/bash</value>
     <value type="QString">SPEECHD_PORT=7560</value>
-    <value type="QString">SSH_AGENT_PID=1467</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-rvPcoz/ssh</value>
+    <value type="QString">SSH_AGENT_PID=1255</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-hcvrII/ssh</value>
     <value type="QString">USER=vivanov</value>
     <value type="QString">USERNAME=vivanov</value>
-    <value type="QString">XAUTHORITY=/var/run/gdm/auth-for-vivanov-pQiNmK/database</value>
+    <value type="QString">XAUTHORITY=/var/run/gdm/auth-for-vivanov-qSE6AU/database</value>
     <value type="QString">XDG_CONFIG_DIRS=/etc/xdg/xdg-gnome:/etc/xdg</value>
     <value type="QString">XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/</value>
-    <value type="QString">XDG_SESSION_COOKIE=56fcfb4009e87a71e6e987045090e605-1383805438.476391-803263169</value>
+    <value type="QString">XDG_SESSION_COOKIE=56fcfb4009e87a71e6e987045090e605-1384161438.588179-1671123647</value>
    </valuelist>
    <value key="abstractProcess.IgnoreReturnValue" type="bool">false</value>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
@@ -173,7 +173,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Debug</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
-    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-iFDE5EBc8P,guid=caccc50c6bceeb9ff8f8e1a75279d7bb</value>
+    <value type="QString">DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-EAUmFHmM1L,guid=cbc06fb550f1a5100b6b08025280a09e</value>
     <value type="QString">DEFAULTS_PATH=/usr/share/gconf/gnome.default.path</value>
     <value type="QString">DESKTOP_SESSION=gnome</value>
     <value type="QString">DISPLAY=:0.0</value>
@@ -181,8 +181,8 @@
     <value type="QString">GDM_KEYBOARD_LAYOUT=us</value>
     <value type="QString">GDM_LANG=ru_RU.utf8</value>
     <value type="QString">GNOME_DESKTOP_SESSION_ID=this-is-deprecated</value>
-    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-2SSg5V</value>
-    <value type="QString">GNOME_KEYRING_PID=1206</value>
+    <value type="QString">GNOME_KEYRING_CONTROL=/tmp/keyring-hcvrII</value>
+    <value type="QString">GNOME_KEYRING_PID=1203</value>
     <value type="QString">GTK_MODULES=canberra-gtk-module</value>
     <value type="QString">HOME=/home/vivanov</value>
     <value type="QString">LANG=ru_RU.utf8</value>
@@ -194,17 +194,17 @@
     <value type="QString">PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</value>
     <value type="QString">PWD=/home/vivanov</value>
     <value type="QString">QTDIR=/usr/share/qt4</value>
-    <value type="QString">SESSION_MANAGER=local/vivanov:@/tmp/.ICE-unix/1224,unix/vivanov:/tmp/.ICE-unix/1224</value>
+    <value type="QString">SESSION_MANAGER=local/vivanov:@/tmp/.ICE-unix/1221,unix/vivanov:/tmp/.ICE-unix/1221</value>
     <value type="QString">SHELL=/bin/bash</value>
     <value type="QString">SPEECHD_PORT=7560</value>
-    <value type="QString">SSH_AGENT_PID=1258</value>
-    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-2SSg5V/ssh</value>
+    <value type="QString">SSH_AGENT_PID=1255</value>
+    <value type="QString">SSH_AUTH_SOCK=/tmp/keyring-hcvrII/ssh</value>
     <value type="QString">USER=vivanov</value>
     <value type="QString">USERNAME=vivanov</value>
-    <value type="QString">XAUTHORITY=/var/run/gdm/auth-for-vivanov-DbQ0qF/database</value>
+    <value type="QString">XAUTHORITY=/var/run/gdm/auth-for-vivanov-qSE6AU/database</value>
     <value type="QString">XDG_CONFIG_DIRS=/etc/xdg/xdg-gnome:/etc/xdg</value>
     <value type="QString">XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share/:/usr/share/</value>
-    <value type="QString">XDG_SESSION_COOKIE=56fcfb4009e87a71e6e987045090e605-1383716794.809157-1995492717</value>
+    <value type="QString">XDG_SESSION_COOKIE=56fcfb4009e87a71e6e987045090e605-1384161438.588179-1671123647</value>
    </valuelist>
    <value key="abstractProcess.IgnoreReturnValue" type="bool">true</value>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
