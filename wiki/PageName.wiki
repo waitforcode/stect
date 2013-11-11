@@ -1,6 +1,6 @@
-=Using stect for visual attack at steganography.
+=Using stect for visual attack at steganography.=
 
-This method of replacing the least significant bit is best suited for uncompressed images, such as images in BMP or PNG. Alas, because of their large size, these formats are not yet gained such popularity as the format of JPEG. A BMP format now in general frankly outdated - alas , classic steganography - microchanges color of each pixel is gradually eroding . But in spite of this method of attack on the visual image is still something that can .
+This method of replacing the least significant bit is best suited for uncompressed images, such as images in BMP or PNG. These formats are not yet gained such popularity as the format of JPEG. A BMP format now in general frankly outdated, but classic steganography - microchanges color of each pixel is gradually eroding . But in spite of this method of attack on the visual image is still something that can .
 
 Let us take a simple program for steganography in JPEG - JSTEG and prepare the raw data - examines the file without the hidden message ( empty container) , and with steganography message.
 
