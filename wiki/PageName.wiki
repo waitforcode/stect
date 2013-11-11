@@ -4,7 +4,10 @@ This method of replacing the least significant bit is best suited for uncompress
 
 Let us take a simple program for steganography in JPEG - JSTEG and prepare the raw data - examines the file without the hidden message ( empty container) , and with steganography message.
 
+||[http://1.bp.blogspot.com/-WY_yqQP-Mxc/UnnutfurI_I/AAAAAAAAIjY/cbAvF4J8BSc/s1600/images.jpg]||[http://4.bp.blogspot.com/-MPhSv_TazpQ/UnnvEjXAzpI/AAAAAAAAIjg/dehk-MB02ME/s1600/images_stego.jpg]||
+||Image without steganography||Image with steganography||
 Visual comparison of images in a modified jsteg- th visible image artifacts around small parts - but this in itself does not mean anything - that happens a lot in image compression with low quality. Now take a magic program stect load both files in it and ....
+
 
 Result Attack visual image containing no
 stego - insert
